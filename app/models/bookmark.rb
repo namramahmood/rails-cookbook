@@ -3,8 +3,7 @@ class Bookmark < ApplicationRecord
   belongs_to :category
 
   # Validations
-  validates :recipe, presence: true
-  validates :category, presence: true
-  validates :comment, length: { minimum: 6, message: "must be at least 6 characters long" }
-  validates_uniqueness_of :recipe, scope: :category, message: "This recipe is already bookmarked in this category"
-end
+
+  validates :catergory_id, uniqueness: {scope: :recipe_id}
+  validates :comment, length: {minimum: 6}
+end 

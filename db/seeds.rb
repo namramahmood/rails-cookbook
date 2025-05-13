@@ -10,14 +10,36 @@
 
 # db/seeds.rb
 
-# Create some categories (if you haven't created them yet)
-category1 = Category.create(name: "Desserts")
-category2 = Category.create(name: "Main Courses")
-category3 = Category.create(name: "Appetizers")
-category4 = Category.create(name: "Drinks")
+puts "cleaning DB..."
+Recipe.destroy_all
 
-# Create some recipes
-Recipe.create(name: "Chocolate Cake", description: "A rich and moist chocolate cake", category: category1)
-Recipe.create(name: "Spaghetti Bolognese", description: "Classic spaghetti with a rich meat sauce", category: category2)
-Recipe.create(name: "Bruschetta", description: "Italian appetizer with tomatoes, basil, and garlic on toasted bread", category: category3)
-Recipe.create(name: "Margarita", description: "A refreshing cocktail with lime and tequila", category: category4)
+puts "creating new recipes..."
+Recipe.create!(
+  name: "Spaghetti Carbonara",
+  description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper. Creamy and satisfying without using any cream!",
+  image_url: "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
+  rating: 4.7
+)
+
+Recipe.create!(
+  name: "Chicken Tikka Masala",
+  description: "Chunks of grilled chicken enveloped in a rich, creamy tomato-based sauce, infused with spices and served with naan or rice.",
+  image_url: "https://images.unsplash.com/photo-1625944227523-1ee2f92e4b4f",
+  rating: 4.8
+)
+
+Recipe.create!(
+  name: "Vegetable Stir Fry",
+  description: "A quick and colorful medley of fresh vegetables stir-fried in a savory soy-ginger sauce. Perfect for a healthy weeknight dinner.",
+  image_url: "https://images.unsplash.com/photo-1597395064538-8f1e7c9fe6b7",
+  rating: 4.4
+)
+
+Recipe.create!(
+  name: "Classic Cheeseburger",
+  description: "Juicy grilled beef patty topped with melted cheese, lettuce, tomato, and pickles on a toasted bun. A timeless American favorite.",
+  image_url: "https://images.unsplash.com/photo-1550547660-d9450f859349",
+  rating: 4.6
+)
+
+puts "#{Recipe.count} recipes created!"
