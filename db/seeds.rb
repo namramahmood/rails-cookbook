@@ -10,36 +10,52 @@
 
 # db/seeds.rb
 
-puts "cleaning DB..."
+# db/seeds.rb
+
+puts "Cleaning DB..."
+Bookmark.destroy_all
+Category.destroy_all
 Recipe.destroy_all
 
-puts "creating new recipes..."
-Recipe.create!(
+puts "Creating recipes..."
+carbonara = Recipe.create!(
   name: "Spaghetti Carbonara",
   description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper. Creamy and satisfying without using any cream!",
   image_url: "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
   rating: 4.7
 )
 
-Recipe.create!(
+tikka = Recipe.create!(
   name: "Chicken Tikka Masala",
-  description: "Chunks of grilled chicken enveloped in a rich, creamy tomato-based sauce, infused with spices and served with naan or rice.",
+  description: "Chunks of grilled chicken in a rich, creamy tomato-based sauce, infused with spices and served with naan or rice.",
   image_url: "https://images.unsplash.com/photo-1625944227523-1ee2f92e4b4f",
   rating: 4.8
 )
 
-Recipe.create!(
+stir_fry = Recipe.create!(
   name: "Vegetable Stir Fry",
-  description: "A quick and colorful medley of fresh vegetables stir-fried in a savory soy-ginger sauce. Perfect for a healthy weeknight dinner.",
+  description: "A colorful medley of fresh vegetables stir-fried in a savory soy-ginger sauce.",
   image_url: "https://images.unsplash.com/photo-1597395064538-8f1e7c9fe6b7",
   rating: 4.4
 )
 
-Recipe.create!(
+burger = Recipe.create!(
   name: "Classic Cheeseburger",
-  description: "Juicy grilled beef patty topped with melted cheese, lettuce, tomato, and pickles on a toasted bun. A timeless American favorite.",
+  description: "Grilled beef patty with cheese, lettuce, tomato, and pickles on a toasted bun.",
   image_url: "https://images.unsplash.com/photo-1550547660-d9450f859349",
   rating: 4.6
 )
 
-puts "#{Recipe.count} recipes created!"
+puts "Creating categories..."
+italian = Category.create!(name: "Italian")
+indian = Category.create!(name: "Indian")
+asian = Category.create!(name: "Asian")
+american = Category.create!(name: "American")
+
+puts "Creating bookmarks..."
+Bookmark.create!(category: italian, recipe: carbonara, comment: "Authentic Roman pasta.")
+Bookmark.create!(category: indian, recipe: tikka, comment: "My go-to comfort food.")
+Bookmark.create!(category: asian, recipe: stir_fry, comment: "Quick and healthy.")
+Bookmark.create!(category: american, recipe: burger, comment: "Perfect for BBQ nights.")
+
+puts "#{Recipe.count} recipes, #{Category.count} categories, and #{Bookmark.count} bookmarks created!"

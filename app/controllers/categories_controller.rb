@@ -4,9 +4,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
-    @bookmarks = @category.bookmarks.includes(:recipe)
-  end
+   @category = Category.find(params[:id])
+   @recipes = @category.recipes
+end
+
 
   def new
     @category = Category.new
